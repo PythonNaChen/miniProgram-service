@@ -22,6 +22,7 @@ export default {
       "pages/dataDetail/main", // 日志记录  -->  数据填写
       "pages/collection/main", // 档期详情
       "pages/schedule/main", // 档期详情
+      "pages/orderInfo/main", // 订单列表
     ],
     window: {
       backgroundTextStyle: 'light',

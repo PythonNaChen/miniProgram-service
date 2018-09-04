@@ -38,23 +38,26 @@
         <div class="order">
             <div class="title">订单列表</div>
             <div class="order_list" v-if="No_data === true" v-for="(item, index) in data" :key="index">
-                <div class="customer">
-                    <span class="lable" v-if="item.typs===1">月嫂</span>
-                    <span class="lable" v-if="item.typs===2">育儿嫂</span>
-                    <span class="lable2">客户：{{item.customername}}</span>
-                </div>
-                <div class="time">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/time_icon_19.png" alt="">
-                    <span class="lable2">服务时间：{{item.stime}} - {{item.etime}}</span>
-                </div>
-                <div class="state">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/state.png" alt="">
-                    <span class="lable2">订单状态：
+                <div @click="goOrderList()">
+                    <div class="customer">
+                        <span class="lable" v-if="item.typs===1">月嫂</span>
+                        <span class="lable" v-if="item.typs===2">育儿嫂</span>
+                        <span class="lable2">客户：{{item.customername}}</span>
+                    </div>
+                    <div class="time">
+                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/time_icon_19.png" alt="">
+                        <span class="lable2">服务时间：{{item.stime}} - {{item.etime}}</span>
+                    </div>
+                    <div class="state">
+                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/state.png" alt="">
+                        <span class="lable2">订单状态：
+                        <span style="color: #EA5A42;" v-if="item.status === 0">订单未执行</span>
                         <span style="color: #EA5A42;" v-if="item.status === 1">执行中</span>
                         <span style="color: #EA5A42;" v-if="item.status === 2">休息中</span>
                         <span style="color: #EA5A42;" v-if="item.status === 3">已结束</span>
                         <span style="color: #EA5A42;" v-if="item.status === 4">挂单中</span>
                         <span style="color: #EA5A42;" v-if="item.status === 5">退款中</span>
+                        <span style="color: #EA5A42;" v-if="item.status === 6">等待用户确认</span>
                         <span style="color: #EA5A42;" v-if="item.status === 20">退单退款</span>
                         <span style="color: #EA5A42;" v-if="item.status === 21">正常结束(退)</span>
                         <span style="color: #EA5A42;" v-if="item.status === 22">正常结束</span>
@@ -66,9 +69,11 @@
                         <span style="color: #EA5A42;" v-if="item.status === 2011">已退单(评价完成-已退款)</span>
                         <span style="color: #EA5A42;" v-if="item.status === 2111">已结束(退,评价完成-已退款)</span>
                     </span>
+                    </div>
                 </div>
                 <div class="rightTo" @click="go_logs_record(item.order_id, item.customername)"><img
-                        src="https://www.360myhl.com/meixinJF/MM/ximg/rightTo.png" alt=""></div>
+                            src="https://www.360myhl.com/meixinJF/MM/ximg/rightTo.png" alt=""></div>
+
             </div>
             <div class="order_list" v-if="No_data === false">
                <span style="color: #ea5a43;">暂无数据...</span>
@@ -79,7 +84,7 @@
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/schedule.png" class="img1">
                 <p>档期</p>
             </div>
-            <div class="menu-list-item">
+            <div class="menu-list-item" @click="goOrderList()">
                 <img src="http://www.360myhl.com/meixinJF/MM/ximg/order.png" class="img2">
                 <p>订单</p>
             </div>
@@ -109,6 +114,11 @@
       };
     },
     methods: {
+      // 跳转到 预约 列表
+      goOrderList() {
+        const url = "../orderInfo/main?openid=" + this.openid + "&status=" + 0;
+        wx.navigateTo({ url });
+      },
       // 获取用户头像
       getUserHeadeImg() {
         let that = this;
@@ -163,6 +173,8 @@
               method: "GET",
               success: function(response) {
                 console.log("用户数据：", response.data);
+                console.log("用户数据：", response.data.id);
+                wx.setStorageSync('Yid', response.data.id) // 设置 session 会话
                 if (response.data) {
                   that.customername = response.data.name;
                   that.YNAME = response.data.YNAME;

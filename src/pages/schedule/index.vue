@@ -1,6 +1,18 @@
 <template>
     <div class="page">
         <div id="box">
+            <div class="selectedDate" style="background-color: #fff;height: 62px;display: flex;line-height: 62px;justify-content: space-around;font-size: 18px;">
+                <!-- 开始日期 -->
+                <picker mode="date" :value="startDate" start="1999-01-01" end="2099-01-01"
+                        @change="selectedStartDate">
+                    <span type="default">{{s_date}}</span>
+                </picker>
+                <!-- 结束日期 -->
+                <picker mode="date" :value="endDate" start="1999-01-01" end="2099-01-01"
+                        @change="selectedEndDate">
+                    <span type="default">{{e_date}}</span>
+                </picker>
+            </div>
             <div class="thead_mask"></div>
             <Calendar :value="value" @next="next" @prev="prev" :events="events" multi disabled
                       @select="select" ref="calendar" @selectMonth="selectMonth" @selectYear="selectYear"/>
@@ -20,7 +32,11 @@
   export default {
     data() {
       return {
-        value: [[thisYear, thisMonth, thisDay]] // 当前 年 月 日
+        value: [[thisYear, thisMonth, thisDay]], // 当前 年 月 日
+        startDate: `${thisYear}-${thisMonth}-${thisDay}`, // 开始日期
+        s_date: '开始日期', // 所选的开始日期
+        endDate: `${thisYear}-${thisMonth}-${thisDay}`, // 结束日期
+        e_date: '结束日期', // 所选的开始日期
       };
     },
     components: { Calendar },
@@ -33,10 +49,20 @@
       select(val, val2) {
         console.log(val);
         console.log(val2);
+      },
+      // 选中的开始日期为
+      selectedStartDate(e) {
+        console.log("选中的开始日期为：" + e.mp.detail.value);
+        this.s_date = e.mp.detail.value
+      },
+      // 选中的结束日期为
+      selectedEndDate(e) {
+        console.log("选中的结束日期为：" + e.mp.detail.value);
+        this.e_date = e.mp.detail.value
       }
     },
     onLoad() {
-      let that = this
+      let that = this;
       var api = "https://www.360myhl.com/meixinJF/xcx/ht?attendantsid=1";
       wx.request({
         url: api,
@@ -68,7 +94,7 @@
               newDate.push(newLi); // 再把每个数组 存进 最大的 空数组里
             }
             console.log(newDate);
-            that.value = newDate
+            that.value = newDate;
           }
         }
       });
@@ -89,6 +115,7 @@
         top: 20%;
         width: 100%;
     }
+
     #box .thead_mask {
         width: 100%;
         height: 40px;
@@ -99,7 +126,8 @@
         opacity: 0.3;
         z-index: 50;
     }
-    #box .unclick_mask{
+
+    #box .unclick_mask {
         border: 1px solid #000;
         width: 100%;
         height: 250px;
