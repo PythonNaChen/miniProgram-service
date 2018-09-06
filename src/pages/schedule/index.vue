@@ -1,23 +1,38 @@
 <template>
     <div class="page">
         <div id="box">
-            <div class="selectedDate" style="background-color: #fff;height: 62px;display: flex;line-height: 62px;justify-content: space-around;font-size: 18px;">
+            <div class="selectedRadio">
+                <div class="radio" :class="{active: isActive}"  @click="singleElection(0)">已安排</div>
+                <div class="radio" :class="{active: !isActive}" @click="singleElection(1)">可预约</div>
                 <!-- 开始日期 -->
-                <picker mode="date" :value="startDate" start="1999-01-01" end="2099-01-01"
-                        @change="selectedStartDate">
-                    <span type="default">{{s_date}}</span>
-                </picker>
+                <div class="startTime">
+                    <picker mode="date" :value="startDate" start="1999-01-01" end="2099-01-01"
+                            @change="selectedStartDate">
+                        <span type="default">{{s_date}}</span>
+                    </picker>
+                </div>
                 <!-- 结束日期 -->
-                <picker mode="date" :value="endDate" start="1999-01-01" end="2099-01-01"
-                        @change="selectedEndDate">
-                    <span type="default">{{e_date}}</span>
-                </picker>
+                <div class="endTime">
+                    <picker mode="date" :value="endDate" start="1999-01-01" end="2099-01-01"
+                            @change="selectedEndDate">
+                        <span type="default">{{e_date}}</span>
+                    </picker>
+                </div>
+                <div class="submitTime">提交时间</div>
             </div>
             <div class="thead_mask"></div>
             <Calendar :value="value" @next="next" @prev="prev" :events="events" multi disabled
                       @select="select" ref="calendar" @selectMonth="selectMonth" @selectYear="selectYear"/>
-            <!--<button @click="setToday">返回今日</button>-->
             <div class="unclick_mask"></div>
+            <!-- 提示 -->
+            <div class="notice">
+                <div class="notice_box">
+                    <div class="line_one"></div>
+                    <div class="line_two">已安排</div>
+                    <div class="line_three"></div>
+                    <div class="line_four">可预约</div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -34,13 +49,27 @@
       return {
         value: [[thisYear, thisMonth, thisDay]], // 当前 年 月 日
         startDate: `${thisYear}-${thisMonth}-${thisDay}`, // 开始日期
-        s_date: '开始日期', // 所选的开始日期
+        s_date: '选择开始日期', // 所选的开始日期
         endDate: `${thisYear}-${thisMonth}-${thisDay}`, // 结束日期
-        e_date: '结束日期', // 所选的开始日期
+        e_date: '选择结束日期', // 所选的开始日期
+        isActive: true, // 勾选了安排调休为 true ，为 false 时表示选择了 安排工作
+        isActiveValue: '已安排' // 显示 安排调休或者工作
       };
     },
     components: { Calendar },
     methods: {
+      // 选择调休还是工作
+      singleElection (v){
+        if (v === 0) {
+          console.log("您选择了已安排");
+          this.isActive = true;
+          this.isActiveValue = '已安排';
+        } else if ( v === 1) {
+          console.log("您选择了可预约");
+          this.isActive = false;
+          this.isActiveValue = '可预约';
+        }
+      },
       selectMonth(month, year) { console.log(year, month); },
       prev(month) { console.log(month); },
       next(month) { console.log(month); },
@@ -103,38 +132,126 @@
 </script>
 
 <style scoped>
+    /* 上方操作台 */
+    .selectedRadio{
+        background-color: #fff;
+        height: 100px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+    }
+    /* 开始时间 定位*/
+    .startTime{
+        position: absolute;
+        bottom: 15%;
+        left: 6%;
+        border-bottom: 1px solid #cccccc;
+    }
+    /* 结束时间 定位*/
+    .endTime{
+        position: absolute;
+        bottom: 15%;
+        left: 39%;
+        border-bottom: 1px solid #cccccc;
+    }
+    /* 安排 调休 和 工作 的公共样式 */
+    .radio{
+        margin-top: 10px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #ccc;
+        color: #000;
+        text-align: center;
+        border-radius: 7px;
+    }
+    /* 选择其中某项 后激活的样式*/
+    .active{
+        background-color: #00b26a !important;
+        color: #ffffff !important;
+    }
+    /* 提交时间的按钮 */
+    .submitTime{
+        margin-top: 35px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #ea5a43;
+        border-radius: 14px;
+        color: #ffffff;
+        text-align: center;
+    }
     .page {
         width: 100vh;
         height: 100vh;
         background-color: #000000;
     }
-
     #box {
         position: fixed;
         left: 0;
-        top: 20%;
+        top: 5%;
         width: 100%;
     }
-
     #box .thead_mask {
         width: 100%;
         height: 40px;
         background-color: #ccc;
         position: absolute;
-        top: 13%;
+        top: 30%;
         left: 0;
         opacity: 0.3;
         z-index: 50;
     }
-
     #box .unclick_mask {
         border: 1px solid #000;
         width: 100%;
-        height: 250px;
+        height: 280px;
         background-color: #ccc;
         position: absolute;
-        top: 20%;
+        top: 39%;
         left: 0;
         opacity: 0;
+    }
+    .notice {
+        height: 60px;
+        width: 100%;
+        background-color: #fff;
+        text-align: center;
+        position: absolute;
+        bottom: -10%;
+        left: 0;
+    }
+    .notice .notice_box{
+        width: 60%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .notice .line_one{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: 3px solid #ea5a43;
+        background-color: #fff;
+    }
+    .notice .line_two{
+        font-size: 16px;
+        height: 35px;
+        line-height: 35px;
+    }
+    .notice .line_three{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 3px solid #ccc;
+    }
+    .notice .line_four{
+        font-size: 16px;
+        height: 35px;
+        line-height: 35px;
     }
 </style>
