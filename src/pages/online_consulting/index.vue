@@ -1,5 +1,9 @@
 <template>
-    <div>我是在线咨询</div>
+    <div>
+
+        <button open-type="contact" session-from="weapp">进入客服会话</button>
+
+    </div>
 </template>
 
 <script>

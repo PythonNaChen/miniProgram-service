@@ -18,11 +18,11 @@
                         <span type="default">{{e_date}}</span>
                     </picker>
                 </div>
-                <div class="submitTime">提交时间</div>
+                <div class="submitTime" @click="submitSchedule()">提交时间</div>
             </div>
             <div class="thead_mask"></div>
-            <Calendar :value="value" @next="next" @prev="prev" :events="events" multi disabled
-                      @select="select" ref="calendar" @selectMonth="selectMonth" @selectYear="selectYear"/>
+            <Calendar :value="value" @next="next" @prev="prev" multi
+                      @select="select" ref="calendar"/>
             <div class="unclick_mask"></div>
             <!-- 提示 -->
             <div class="notice">
@@ -53,7 +53,7 @@
         endDate: `${thisYear}-${thisMonth}-${thisDay}`, // 结束日期
         e_date: '选择结束日期', // 所选的开始日期
         isActive: true, // 勾选了安排调休为 true ，为 false 时表示选择了 安排工作
-        isActiveValue: '已安排' // 显示 安排调休或者工作
+        isActiveValue: '0' // 显示 安排调休或者工作
       };
     },
     components: { Calendar },
@@ -63,11 +63,14 @@
         if (v === 0) {
           console.log("您选择了已安排");
           this.isActive = true;
-          this.isActiveValue = '已安排';
+          console.log("状态", this.isActive);
+          this.isActiveValue = '0';
+          console.log("值", this.isActiveValue);
+          this.$forceUpdate()
         } else if ( v === 1) {
           console.log("您选择了可预约");
           this.isActive = false;
-          this.isActiveValue = '可预约';
+          this.isActiveValue = '1';
         }
       },
       selectMonth(month, year) { console.log(year, month); },
@@ -88,11 +91,38 @@
       selectedEndDate(e) {
         console.log("选中的结束日期为：" + e.mp.detail.value);
         this.e_date = e.mp.detail.value
+      },
+      // 提交
+      submitSchedule() {
+        const api = 'https://www.360myhl.com/meixinJF/xcx/dq?status=' + this.isActiveValue + '&attendantid=' + wx.getStorageSync('Yid') + '&start_date=' + this.s_date + '&end_date=' + this.e_date;
+        wx.request({
+          url: api,
+          data: {
+            // status: this.isActiveValue,
+            // attendantid: wx.getStorageSync('Yid'),
+            // start_date: this.s_date,
+            // end_date: this.e_date,
+          },
+          header: {
+            "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
+          },
+          success: function(res) {
+            if (res) {
+              console.log('submitSchedule', res);
+              wx.showToast({
+                title: '已完成',
+                icon:' success',
+                duration: 3000,
+                mask: true
+              })
+            }
+          }
+        });
       }
     },
     onLoad() {
       let that = this;
-      var api = "https://www.360myhl.com/meixinJF/xcx/ht?attendantsid=1";
+      var api = "https://www.360myhl.com/meixinJF/xcx/ht?attendantsid=" + wx.getStorageSync('Yid');
       wx.request({
         url: api,
         data: {},

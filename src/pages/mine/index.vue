@@ -226,7 +226,8 @@
       },
       // 跳转到档期
       goCollection(){
-        const url = "../collection/main?id=" + this.id;
+        // const url = "../collection/main?id=" + this.id;
+        const url = "../schedule/main";
         wx.navigateTo({ url });
       }
     },
