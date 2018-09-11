@@ -12,11 +12,11 @@ export default {
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     pages: [
-      "^pages/index/main",
+      "pages/index/main",
       "pages/mima_classroom/main",
       "pages/online_consulting/main",
       "pages/mine/main",
-      "pages/login/main",
+      "^pages/login/main",
       "pages/detail_list/main",
       "pages/logs_record/main", // 日志记录选项
       "pages/dataDetail/main", // 日志记录  -->  数据填写

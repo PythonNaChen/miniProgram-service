@@ -12,11 +12,11 @@
                 <img src="https://www.360myhl.com/meixinJF/MM/ximg/code_07.png" alt="">
                 <input type="text" placeholder="验证码" v-model="code">
                 <button v-if="!bool" open-type="getUserInfo" @getuserinfo="bindGetUserInfo" @click="getUserInfo1">
-                    点击发送验证码
+                    发送验证码
                 </button>
                 <button v-if="bool" style="font-size: 12px;" disabled open-type="getUserInfo"
                         @getuserinfo="bindGetUserInfo" @click="getUserInfo1">
-                    已发送，请耐心等待
+                    已发送...
                 </button>
             </div>
         </div>
@@ -98,7 +98,6 @@
             "content-type": "application/x-www-form-urlencoded;charset=utf-8"
           },
           success: function(res) {
-            console.log(typeof res.data);
             if (res) {
               if (res.data === 1) {
                 // 登陆成功
@@ -230,6 +229,7 @@
     .phone, .code {
         display: flex;
         font-size: 16px;
+        align-items: center;
         color: #aaaaaa;
         width: 80%;
         margin: 40px auto 0;
