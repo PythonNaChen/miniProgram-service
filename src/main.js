@@ -15,8 +15,8 @@ export default {
       "pages/index/main",
       "pages/mima_classroom/main",
       "pages/online_consulting/main",
-      "pages/mine/main",
-      "^pages/login/main",
+      "^pages/mine/main",
+      "pages/login/main",
       "pages/detail_list/main",
       "pages/logs_record/main", // 日志记录选项
       "pages/dataDetail/main", // 日志记录  -->  数据填写

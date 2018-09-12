@@ -20,13 +20,14 @@
                             <img src="http://www.360myhl.com/meixinJF/MM/ximg/orderList_icon_03.png" alt="">
                             <span v-if="item.status === 0">待安排</span>
                             <span v-if="item.status === 1">执行中</span>
-                            <span v-if="item.status === 11">护理员请求提前结束</span>
+                            <span v-if="item.status === 11">提前结束申请中</span>
                             <span v-if="item.status === 2">休息中</span>
                             <span v-if="item.status === 3">已结束</span>
                             <span v-if="item.status === 4">挂单中</span>
                             <span v-if="item.status === 5">退款中</span>
                             <span v-if="item.status === 6">等待用户确认</span>
                             <span v-if="item.status === 20">退单退款</span>
+                            <span v-if="item.status === 2099">退单申请中</span>
                             <span v-if="item.status === 21">正常结束(退)</span>
                             <span v-if="item.status === 22">正常结束</span>
                             <span v-if="item.status === 16">协助派工中</span>
@@ -64,13 +65,10 @@
                         <div class="salary_total" v-if="item.typs === 2">共计金额：￥<span>{{item.class_price_yu}}</span>/26天
                         </div>
                         <div class="bott">
-                            <span v-if="item.status === 0 " @click="sureTime(item.oid)">确认时间</span>
-                            <!--<span v-if="item.status === 1">立即支付</span>-->
+                            <span v-if="item.status === 0 || item.status === 4" @click="sureTime(item.oid)">确认时间</span>
                             <span v-if="item.status === 1" @click="endS(item.oid)">请求提前结束</span>
                             <span v-if="item.status === 11" @click="endE(item.oid)">放弃提前结束</span>
-                            <span v-if="item.status === 3 || item.status === 5 || item.status === 20 || item.status === 21 || item.status === 22">点评</span>
-                            <span v-if="item.status === 0 || item.status === 1 || item.status === 2 || item.status === 3 || item.status === 4 || item.status === 5 || item.status === 20 || item.status === 21 || item.status === 22 || item.status === 16 || item.status === 31 || item.status === 201 || item.status === 211 || item.status === 221 || item.status === 2011 || item.status === 2111">再次续单</span>
-                        </div>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -83,9 +81,6 @@
     name: "index",
     data() {
       return {
-        tabs: ["全部", "已预约", "执行中", "已结束", "已取消", "待支付"],
-        activeIndex: 0,
-        fontSize: 30,
         openid: "",
         allData: null,
         startDate: "2018-08-09",
@@ -117,25 +112,6 @@
       }
     },
     methods: {
-      // id 选择器
-      $(id) {
-        return typeof id === "string" ? document.getElementById(id) : null;
-      },
-
-      getTab(status) {
-        let activeStatus = status;
-        if (activeStatus) {
-          let all_li = this.$("tab_header").getElementsByTagName("li");
-          // 先清除所有样式
-          for (let j = 0; j < all_li.length; j++) {
-            all_li[j].className = "";
-          }
-          // 当前的添加激活样式
-          let thisLi = this.$("tab_header").getElementsByTagName("li")[activeStatus];
-          thisLi.className += " selected";
-        }
-      },
-
       // 点击获取各自的列表信息
       getEachList(status) {
         console.log('status', status);
@@ -250,7 +226,7 @@
           data: {
             orderid: orderid,
             yid: wx.getStorageSync("Yid"),
-            end_time: this.selectedDate
+            disID: wx.getStorageSync("disID")
           },
           header: {
             "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
