@@ -21,9 +21,8 @@
                 <div class="submitTime" @click="submitSchedule()">提交时间</div>
             </div>
             <div class="thead_mask"></div>
-            <Calendar :value="value" @next="next" @prev="prev" multi
-                      @select="select" ref="calendar"/>
-            <div class="unclick_mask"></div>
+            <Calendar :value="value" @next="next" @prev="prev" multi  @select="select" ref="calendar"/>
+            <!--<div class="unclick_mask"></div>-->
             <!-- 提示 -->
             <div class="notice">
                 <div class="notice_box">
@@ -79,8 +78,8 @@
       selectYear(year) { console.log(year); },
       setToday(val, val1, val2) { this.$refs.calendar.setToday(); },
       select(val, val2) {
-        console.log(val);
-        console.log(val2);
+        console.log('val',val);
+        console.log('val2', val2);
       },
       // 选中的开始日期为
       selectedStartDate(e) {
