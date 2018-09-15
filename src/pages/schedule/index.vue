@@ -2,7 +2,7 @@
     <div class="page">
         <div id="box">
             <div class="selectedRadio">
-                <div class="radio" :class="{active: isActive}"  @click="singleElection(0)">已安排</div>
+                <div class="radio" :class="{active: isActive}"  @click="singleElection(0)">休息</div>
                 <div class="radio" :class="{active: !isActive}" @click="singleElection(1)">可预约</div>
                 <!-- 开始日期 -->
                 <div class="startTime">
@@ -21,15 +21,17 @@
                 <div class="submitTime" @click="submitSchedule()">提交时间</div>
             </div>
             <div class="thead_mask"></div>
-            <Calendar :value="value" @next="next" @prev="prev" multi  @select="select" ref="calendar"/>
+            <Calendar @next="next" @prev="prev" multi  @select="select" ref="calendar" :tileContent="tileContent" :now="now"/>
             <!--<div class="unclick_mask"></div>-->
             <!-- 提示 -->
             <div class="notice">
                 <div class="notice_box">
-                    <div class="line_one"></div>
-                    <div class="line_two">已安排</div>
-                    <div class="line_three"></div>
+                    <div class="line_one">15</div>
+                    <div class="line_two">休息</div>
+                    <div class="line_three">31</div>
                     <div class="line_four">可预约</div>
+                    <div class="line_five">17</div>
+                    <div class="line_six">已安排</div>
                 </div>
             </div>
         </div>
@@ -46,13 +48,14 @@
   export default {
     data() {
       return {
-        value: [[thisYear, thisMonth, thisDay]], // 当前 年 月 日
         startDate: `${thisYear}-${thisMonth}-${thisDay}`, // 开始日期
         s_date: '选择开始日期', // 所选的开始日期
         endDate: `${thisYear}-${thisMonth}-${thisDay}`, // 结束日期
         e_date: '选择结束日期', // 所选的开始日期
         isActive: true, // 勾选了安排调休为 true ，为 false 时表示选择了 安排工作
-        isActiveValue: '0' // 显示 安排调休或者工作
+        isActiveValue: '0', // 显示 安排调休或者工作
+        now: false, // 是否显示今日的图标
+        tileContent: []
       };
     },
     components: { Calendar },
@@ -60,7 +63,7 @@
       // 选择调休还是工作
       singleElection (v){
         if (v === 0) {
-          console.log("您选择了已安排");
+          console.log("您选择了休息");
           this.isActive = true;
           console.log("状态", this.isActive);
           this.isActiveValue = '0';
@@ -77,18 +80,15 @@
       next(month) { console.log(month); },
       selectYear(year) { console.log(year); },
       setToday(val, val1, val2) { this.$refs.calendar.setToday(); },
-      select(val, val2) {
-        console.log('val',val);
-        console.log('val2', val2);
-      },
+      select(val, val2) {},
       // 选中的开始日期为
       selectedStartDate(e) {
-        console.log("选中的开始日期为：" + e.mp.detail.value);
+        // console.log("选中的开始日期为：" + e.mp.detail.value);
         this.s_date = e.mp.detail.value
       },
       // 选中的结束日期为
       selectedEndDate(e) {
-        console.log("选中的结束日期为：" + e.mp.detail.value);
+        // console.log("选中的结束日期为：" + e.mp.detail.value);
         this.e_date = e.mp.detail.value
       },
       // 提交
@@ -107,7 +107,7 @@
           },
           success: function(res) {
             if (res) {
-              console.log('submitSchedule', res);
+              // console.log('submitSchedule', res);
               wx.showToast({
                 title: '已完成',
                 icon:' success',
@@ -130,29 +130,30 @@
         },
         success: function(res) {
           if (res) {
-            console.log("档期信息：", res);
-            let str = res.data;
-            let eachElement = []; // 用来存储拆分后的字符串 "2018-8-31" --> "2018,8,31"
-            let newDate = []; // 用来存储 转换为int型的数组 [ [2018,8,30], [2018,8,31] ]
-
-            // 拆分原型 转换为一维数组，每个元素都是个二维数组
-            for (let i in str) {
-              eachElement.push(str[i].split("-"));
-            }
-            console.log("一维数组：", eachElement);
-
-            // 遍历一维数组长度，并生成对应数量的 空数组 []
-            for (let j in eachElement) {
-              console.log("二维数组：", eachElement[j]);
-              let newLi = [];
-              // 遍历二维数组的每个元素（年，月，日），并转换类型 str --> Number()，再存到与之对应的空数组里
-              for (let x in eachElement[j]) {
-                newLi.push(Number(eachElement[j][x]));
-              }
-              newDate.push(newLi); // 再把每个数组 存进 最大的 空数组里
-            }
-            console.log(newDate);
-            that.value = newDate;
+            console.log("档期信息：", res.data);
+            that.tileContent = res.data
+            // let str = res.data;
+            // let eachElement = []; // 用来存储拆分后的字符串 "2018-8-31" --> "2018,8,31"
+            // let newDate = []; // 用来存储 转换为int型的数组 [ [2018,8,30], [2018,8,31] ]
+            //
+            // // 拆分原型 转换为一维数组，每个元素都是个二维数组
+            // for (let i in str) {
+            //   eachElement.push(str[i].split("-"));
+            // }
+            // // console.log("一维数组：", eachElement);
+            //
+            // // 遍历一维数组长度，并生成对应数量的 空数组 []
+            // for (let j in eachElement) {
+            //   // console.log("二维数组：", eachElement[j]);
+            //   let newLi = [];
+            //   // 遍历二维数组的每个元素（年，月，日），并转换类型 str --> Number()，再存到与之对应的空数组里
+            //   for (let x in eachElement[j]) {
+            //     newLi.push(Number(eachElement[j][x]));
+            //   }
+            //   newDate.push(newLi); // 再把每个数组 存进 最大的 空数组里
+            // }
+            // // console.log(newDate);
+            // that.value = newDate;
           }
         }
       });
@@ -161,6 +162,9 @@
 </script>
 
 <style scoped>
+    .holiday{
+        background-color: green !important;
+    }
     /* 上方操作台 */
     .selectedRadio{
         background-color: #fff;
@@ -252,17 +256,23 @@
         left: 0;
     }
     .notice .notice_box{
-        width: 60%;
+        width: 90%;
         height: 100%;
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
         align-items: center;
     }
+    /* 休息 */
     .notice .line_one{
         height: 30px;
         width: 30px;
         border-radius: 50%;
+        color:#585858;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
         border: 3px solid #ea5a43;
         background-color: #fff;
     }
@@ -271,14 +281,37 @@
         height: 35px;
         line-height: 35px;
     }
+    /* 已安排 */
     .notice .line_three{
         height: 30px;
         width: 30px;
+        color:#585858;
+        font-weight: normal;
         border-radius: 50%;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
         background-color: #fff;
         border: 3px solid #ccc;
     }
     .notice .line_four{
+        font-size: 16px;
+        height: 35px;
+        line-height: 35px;
+    }
+    /* 可预约 */
+    .notice .line_five{
+        height: 30px;
+        width: 30px;
+        color:#ffffff;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #ea5a43;
+    }
+    .notice .line_six{
         font-size: 16px;
         height: 35px;
         line-height: 35px;

@@ -3,44 +3,44 @@
         <div class="logo">
             <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" class="logo">
         </div>
-        <div class="info">
+        <div class="info" style="position: relative;">
             <div class="phone">
                 <img src="https://www.360myhl.com/meixinJF/MM/ximg/phone_03.png" alt="">
                 <input type="text" placeholder="手机号" maxlength="11" v-model="customermobile ">
             </div>
             <div class="code">
                 <img src="https://www.360myhl.com/meixinJF/MM/ximg/code_07.png" alt="">
-                <input type="text" placeholder="验证码" v-model="code">
+                <input type="text" placeholder="验证码" v-model="code" maxlength="6">
                 <button v-if="!bool" open-type="getUserInfo" @getuserinfo="bindGetUserInfo" @click="getUserInfo1">
                     发送验证码
                 </button>
-                <button v-if="bool" style="font-size: 12px;" disabled open-type="getUserInfo"
-                        @getuserinfo="bindGetUserInfo" @click="getUserInfo1">
+                <button v-if="bool" style="font-size: 12px;">
                     已发送...
                 </button>
             </div>
+            <div class="login" @click="loginValidate()">登  录</div>
         </div>
     </div>
 </template>
 
 <script>
-  import base64 from '../../../static/images/base64';
+  import base64 from "../../../static/images/base64";
+
   export default {
     name: "index",
     watch: {
       "code": function() {
         if (this.customermobile) {
           if (this.code.length === 6) {
-            this.loginValidate();
           }
         }
       },
-      'bool': function(v) {
-        let that = this
+      "bool": function(v) {
+        let that = this;
         if (this.bool === true) {
           setTimeout(function() {
             console.log(that.bool = !v);
-          }, 20000)
+          }, 20000);
         }
       }
     },
@@ -51,7 +51,8 @@
         userName: null, // 登陆者的 微信名
         userIMGUrl: null, // 登陆者的 头像地址
         openId: null, // 唯一标识符
-        bool: false
+        bool: false,
+        isLogin: false // 登录按钮
       };
     },
     mounted() {
@@ -84,6 +85,7 @@
       },
       // 登录验证
       async loginValidate() {
+        let that = this
         var api = "https://www.360myhl.com/meixinJF/xcx/start2";
         await wx.request({
           url: api,
@@ -111,13 +113,15 @@
                 wx.navigateTo({
                   url: "/pages/login/main"
                 });
+                that.customermobile = ''
+                that.code = ''
                 // 登录失败提示
                 wx.showModal({
-                  content: '登录失败，请检查后重试',
+                  content: "登录失败，请检查后重试",
                   showCancel: false,
-                  success: function (res) {
+                  success: function(res) {
                     if (res.confirm) {
-                      console.log('用户点击确定')
+                      console.log("用户点击确定");
                     }
                   }
                 });
@@ -214,18 +218,15 @@
         background-size: cover;
         height: 100vh;
     }
-
     .logo {
         width: 70%;
         height: 140px;
         margin: 0 auto 105px;
     }
-
     .logo img {
         width: 100%;
         height: 100%;
     }
-
     .phone, .code {
         display: flex;
         font-size: 16px;
@@ -236,7 +237,6 @@
         border-bottom: 2px solid #ea5944;
         padding: 15px 0;
     }
-
     .phone img, .code img {
         vertical-align: text-top;
         width: 30px;
@@ -244,11 +244,9 @@
         margin-right: 20px;
         margin-top: -2px;
     }
-
     .code input {
         width: 50%;
     }
-
     .code button {
         border: 2px solid #ea5944;
         font-size: 12px;
@@ -256,5 +254,16 @@
         padding: 3px 5px;
         color: #ea5944;
         background-color: #f8f8f8;
+    }
+    .login {
+        position: absolute;
+        left: 38%;
+        bottom: -40%;
+        font-size: 16px;
+        color: #ffffff;
+        padding: 5px 30px;
+        background-color: #ea5a43;
+        border-radius: 7px;
+        cursor: pointer;
     }
 </style>

@@ -39,36 +39,57 @@
     .calendar-tools {
         box-shadow: unset !important;
     }
-    /* 所有周一 到 周五的样式*/
+    /*!* 所有周一 到 周五的样式*!*/
     .calendar ._td ._span {
-        background-color: #ea5a43 !important;
-        color: #fff !important;
+        background-color: #fff;
+        border: 1px solid #ea5a43;
+        color: #585858;
     }
     /* 所有 周六日 的样式*/
     .calendar ._td ._span.red {
-        background-color: #ea5a43 !important;
-        color: #fff !important;
     }
-    /* 选中日期（周一 ~ 周五） */
-    .calendar ._td.selected ._span {
-        background-color: #ffffff !important;
-        color: #585858 !important;
-        border: 1px solid #585858;
-    }
-    /* 选中的 周六日*/
-    .calendar ._td:not(.disabled) ._span.red {
-        background-color: #ffffff;
-        color: #585858 !important;
-        border: 1px solid #585858;
-    }
+    /*!* 选中日期（周一 ~ 周五） *!*/
+    /*.calendar ._td.selected ._span {*/
+        /*background-color: #ffffff !important;*/
+        /*color: #585858 !important;*/
+        /*border: 1px solid #585858;*/
+    /*}*/
+    /*!* 选中的 周六日*!*/
+    /*.calendar ._td:not(.disabled) ._span.red {*/
+        /*background-color: #ffffff;*/
+        /*color: #585858 !important;*/
+        /*border: 1px solid #585858;*/
+    /*}*/
     /* 未选择日期的周六日 */
     .calendar ._td:not(.selected) ._span.red {
-        color: #ccc !important;
-        border: 1px solid #ffffff;
+        color: #585858 ;
+        border: 1px solid #ea5a43;
     }
     /* 被禁止点击的日期 上下月 */
     .calendar ._td.disabled ._span {
         color: #ccc !important;
         background-color: #fff !important;
+        border: unset !important;
+    }
+    .calendar ._td.selected ._span.red{
+        background-color: unset !important;
+        color: #ea6151 !important;
+    }
+    /* 休息 */
+    .rest span{
+        background-color: #fff !important;
+        color: #585858 !important;
+        border: 1px solid #ea5a43 !important;
+    }
+    /* 可预约 */
+    .reservable span{
+        color: #585858 !important;
+        border: 1px solid #ccc !important;
+        background-color: #fff !important;
+    }
+    /* 已安排 */
+    .arranged span{
+        background-color: #ea5a43 !important;
+        color: #fff !important;
     }
 </style>
