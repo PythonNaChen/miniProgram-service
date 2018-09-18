@@ -22,6 +22,9 @@
                             <span v-if="item.status === 1">执行中</span>
                             <span v-if="item.status === 11">提前结束申请中</span>
                             <span v-if="item.status === 2">休息中</span>
+                            <span v-if="item.status === 207">申请休息</span>
+                            <span v-if="item.status === 2077">申请回岗</span>
+                            <span v-if="item.status === 2">休息中</span>
                             <span v-if="item.status === 3">已结束</span>
                             <span v-if="item.status === 4">挂单中</span>
                             <span v-if="item.status === 5">退款中</span>
@@ -69,10 +72,13 @@
                         <div class="bott">
                             <span v-if="item.status === 0 || item.status === 4" @click="getOrderID(item.oid,item.disID)">到岗确认</span>
                             <span v-if="item.status === 1" @click="endS(item.oid)">请求提前结束</span>
-                            <span v-if="item.status === 1" @click="endS(item.oid)">休息</span>
                             <span v-if="item.status === 11" @click="endE(item.oid)">放弃提前结束</span>
                             <span v-if="item.li === 1 && item.status === 1" @click="li(item.oid,item.disID,3099)">离岗确认</span>
                             <span v-if="item.li === 1 && item.status === 20" @click="li(item.oid,item.disID,20999)">退单离岗确认</span>
+
+                            <span v-if="item.status === 1" @click="rest(item.oid,item.disID,207,'申请休息')">休息申请</span>
+                            <span v-if="item.status === 2" @click="rest(item.oid,item.disID,2077,'申请回岗')">申请回岗</span>
+
                          </div>
                         <!-- 确认时间 -->
                         <div class="InputConfirm" v-if="isDialog">
@@ -212,7 +218,7 @@
             console.log(res);
             if (res.confirm) {
               console.log("用户点击确认");
-              if (res.confirm) {
+
                 let api = "https://www.360myhl.com/meixinJF/xcx/liOrder";
                 wx.request({
                   url: api,
@@ -232,7 +238,7 @@
               } else {
                 console.log("用户点击取消");
               }
-            }
+
           }
         })
       },
@@ -278,6 +284,44 @@
 
 
       },
+
+      rest(orderid,disID,type,str) {
+
+        console.log("选中的日期为：" + orderid);
+
+        wx.showModal({
+          title: str,
+          content: "请确认？",
+          confirmText: "确认",
+          cancelText: "取消",
+          success: function(res) {
+            console.log(res);
+            if (res.confirm) {
+              let api = "https://www.360myhl.com/meixinJF/xcx/restA";
+              wx.request({
+                url: api,
+                data: {
+                  orderid: orderid,
+                  disID: disID,
+                  type: type
+                },
+                header: {
+                  "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
+                },
+                success: function(res) {
+                  const url = "/pages/mine/main";
+                  wx.switchTab({ url });
+                }
+              });
+            } else {
+              console.log("用户点击取消");
+            }
+          }
+        });
+
+
+      },
+
 
       // 放弃提前结束
       endE(orderid) {

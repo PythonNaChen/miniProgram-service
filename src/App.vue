@@ -42,7 +42,7 @@
     /*!* 所有周一 到 周五的样式*!*/
     .calendar ._td ._span {
         background-color: #fff;
-        border: 1px solid #ea5a43;
+        border: 3px solid #ea5a43;
         color: #585858;
     }
     /* 所有 周六日 的样式*/
@@ -63,7 +63,7 @@
     /* 未选择日期的周六日 */
     .calendar ._td:not(.selected) ._span.red {
         color: #585858 ;
-        border: 1px solid #ea5a43;
+        border: 3px solid #ea5a43;
     }
     /* 被禁止点击的日期 上下月 */
     .calendar ._td.disabled ._span {
@@ -79,7 +79,7 @@
     .rest span{
         background-color: #fff !important;
         color: #585858 !important;
-        border: 1px solid #ea5a43 !important;
+        border: 3px solid #ea5a43 !important;
     }
     /* 可预约 */
     .reservable span{

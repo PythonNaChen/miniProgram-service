@@ -3,7 +3,8 @@
         <div class="head">
             <div class="head_box">
                 <div class="headIMG">
-                    <img :src="userPhoto[0]" alt="">
+                    <img v-if="userPhoto[0] !== '' && userPhoto[0] !== undefined && userPhoto[0] !== null " :src="userPhoto[0]" alt="">
+                    <img v-else src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">
                 </div>
                 <div class="userInfo">
                     <p class="line_one" v-if="customername === null">未设置<span class="level">专家级</span></p>
@@ -72,11 +73,11 @@
                     </div>
                 </div>
                 <div class="rightTo" @click="go_logs_record(item.order_id, item.customername)"><img
-                            src="https://www.360myhl.com/meixinJF/MM/ximg/rightTo.png" alt=""></div>
+                        src="https://www.360myhl.com/meixinJF/MM/ximg/rightTo.png" alt=""></div>
 
             </div>
             <div class="order_list" v-if="No_data === false">
-               <span style="color: #ea5a43;">暂无数据...</span>
+                <span style="color: #ea5a43;">暂无数据...</span>
             </div>
         </div>
         <div class="menu-list">
@@ -103,10 +104,10 @@
       return {
         userPhoto: [],
         customername: "",
-        phone: '',
+        phone: "",
         YNAME: "",
         YPHONE: "",
-        class_name:"", // 级别
+        class_name: "", // 级别
         openid: "",
         data: "",
         id: null,
@@ -127,6 +128,7 @@
             that.userPhoto.push(data.userInfo.avatarUrl);
           }
         });
+        console.log("that.userPhoto", that.userPhoto);
       },
       // 获取用户的授权信息（名称、城市）
       getSetting() {
@@ -174,7 +176,7 @@
               success: function(response) {
                 console.log("用户数据：", response.data);
                 console.log("用户数据：", response.data.id);
-                wx.setStorageSync('Yid', response.data.id) // 设置 session 会话
+                wx.setStorageSync("Yid", response.data.id); // 设置 session 会话
                 if (response.data) {
                   that.customername = response.data.name;
                   that.YNAME = response.data.YNAME;
@@ -205,12 +207,12 @@
                     res.data[i].etime = res.data[i].etime.slice(0, 10);
                   }
                   that.data = res.data;
-                  console.log('that.data', that.data.length);
+                  console.log("that.data", that.data.length);
                   console.log(typeof that.data);
                   if (that.data.length > 0) {
-                    that.No_data = true
+                    that.No_data = true;
                   } else {
-                    that.No_data = false
+                    that.No_data = false;
                   }
                 }
               }
@@ -219,13 +221,13 @@
       },
       // 点击跳转到日志记录页面 /pages/logs_record/main
       go_logs_record(orderid, name) {
-        wx.setStorageSync('orderid', orderid) // 设置 session 会话
-        wx.setStorageSync('yname', name) // 设置 session 会话
+        wx.setStorageSync("orderid", orderid); // 设置 session 会话
+        wx.setStorageSync("yname", name); // 设置 session 会话
         const url = "../logs_record/main?name=" + name;
         wx.navigateTo({ url });
       },
       // 跳转到档期
-      goCollection(){
+      goCollection() {
         // const url = "../collection/main?id=" + this.id;
         const url = "../schedule/main";
         wx.navigateTo({ url });
@@ -238,7 +240,7 @@
         success(res) {
           if (res.authSetting["scope.userInfo"]) {
             console.log(111);
-          }else{
+          } else {
             // 没有授权过的用户，跳转到自己写的授权提示页面
             wx.navigateTo({
               url: "/pages/login/main"
@@ -246,7 +248,7 @@
           }
         }
       });
-    },
+    }
   };
 </script>
 
