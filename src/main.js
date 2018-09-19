@@ -27,7 +27,7 @@ export default {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '咪嘛月嫂',
+      navigationBarTitleText: '咪嘛月嫂商家版',
       navigationBarTextStyle: 'black'
     },
     "tabBar": {

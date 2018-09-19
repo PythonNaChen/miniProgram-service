@@ -7,18 +7,18 @@
                 <img :src="item.imgSrc" alt="" @click="goBabyDetail(item)">
             </div>
         </div>
-        <div class="percentage">
-            <div class="percentage_box" v-if="!isSwitch" @click="isSwitch = !isSwitch">
-                <div class="mask" :style="{height:maskHeight + '%'}"></div>
-                <div class="percentage_power"></div>
-            </div>
-            <!-- 南孚聚能环 -->
-            <div class="Annular_box" v-else  @click="isSwitch = !isSwitch">
-                <img src="../../../static/images/openRuler.png" alt="">
-                <span class="percentNum">35%</span>
-                <span class="percentDecimal">0.1234</span>
-            </div>
-        </div>
+        <!--<div class="percentage">-->
+            <!--<div class="percentage_box" v-if="!isSwitch" @click="isSwitch = !isSwitch">-->
+                <!--<div class="mask" :style="{height:maskHeight + '%'}"></div>-->
+                <!--<div class="percentage_power"></div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; 南孚聚能环 &ndash;&gt;-->
+            <!--<div class="Annular_box" v-else  @click="isSwitch = !isSwitch">-->
+                <!--<img src="../../../static/images/openRuler.png" alt="">-->
+                <!--<span class="percentNum">35%</span>-->
+                <!--<span class="percentDecimal">0.1234</span>-->
+            <!--</div>-->
+        <!--</div>-->
         <p>妈妈护理</p>
         <div class="mm_nurse">
             <div class="nurse_item" v-for="(item, index) in mm_nurse_list" :key="index">
