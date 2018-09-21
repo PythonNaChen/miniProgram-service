@@ -46,7 +46,7 @@
                         <div class="cont">
                             <div class="img_box" v-if="item.tx !== '' && item.tx !== undefined && item.tx !== null"
                                  @click="go_logs_record(item.id, item.yname)">
-                                <img :src="'https://www.360myhl.com/meixinJF/img/' + item.tx" alt="">
+                                <img :src="'' + item.tx" alt="">
                             </div>
                             <div class="img_box" v-else @click="go_logs_record(item.id, item.name)">
                                 <img src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">

@@ -2,7 +2,7 @@
     <div class="page">
         <div class="head">
             <div class="head_box">
-                <div class="headIMG">
+                <div class="headIMG" @click="goOrderDetails()" >
                     <img v-if="userPhoto[0] !== '' && userPhoto[0] !== undefined && userPhoto[0] !== null " :src="userPhoto[0]" alt="">
                     <img v-else src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">
                 </div>
@@ -231,6 +231,11 @@
         // const url = "../collection/main?id=" + this.id;
         const url = "../schedule/main";
         wx.navigateTo({ url });
+      },
+      // 跳转到 订单详情 列表
+      goOrderDetails() {
+        const url = "../orderDetails/main";
+        wx.navigateTo({ url });
       }
     },
     onLoad() {
@@ -382,7 +387,7 @@
     }
 
     .order .title {
-        border-top: 5px solid #f6f6f6;;
+        /*border-top: 5px solid #f6f6f6;*/
         font-size: 14px;
         border-bottom: 1px solid #ededef;
         padding-left: 20px;
