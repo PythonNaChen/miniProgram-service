@@ -23,6 +23,7 @@ export default {
       "pages/collection/main", // 档期详情
       "pages/schedule/main", // 档期详情
       "pages/orderInfo/main", // 订单列表
+      "pages/orderDetails/main", // 订单列表详情
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -40,12 +41,12 @@ export default {
           "iconPath": "/static/images/index_icon_normal.png",
           "selectedIconPath": "/static/images/index_icon_active.png"
         },
-        {
-          "pagePath": "pages/mima_classroom/main",
-          "text": "咪嘛课堂",
-          "iconPath": "/static/images/mimaClassroom_icon_normal.png",
-          "selectedIconPath": "/static/images/mimaClassroom_icon_active.png"
-        },
+        // {
+        //   "pagePath": "pages/mima_classroom/main",
+        //   "text": "咪嘛课堂",
+        //   "iconPath": "/static/images/mimaClassroom_icon_normal.png",
+        //   "selectedIconPath": "/static/images/mimaClassroom_icon_active.png"
+        // },
         {
           "pagePath": "pages/online_consulting/main",
           "text": "在线咨询",
