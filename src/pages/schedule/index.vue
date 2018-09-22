@@ -285,7 +285,7 @@
         background-color: #fff;
         text-align: center;
         position: absolute;
-        bottom: -11%;
+        bottom: -50px;
         left: 0;
     }
 
