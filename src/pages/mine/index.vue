@@ -312,7 +312,7 @@
         height: 25px;
         line-height: 25px;
         background-color: #ffffff;
-        border-bottom: 5px solid #f6f6f6;
+        border-bottom: 2px solid #f6f6f6;
     }
 
     .manager img {
@@ -326,7 +326,7 @@
         height: 25px;
         line-height: 25px;
         background-color: #ffffff;
-        border-bottom: 5px solid #f6f6f6;
+        border-bottom: 2px solid #f6f6f6;
     }
 
     .phone img {

@@ -115,30 +115,35 @@
           success: function(res) {
             if (res) {
               // console.log('submitSchedule', res);
-              wx.showToast({
-                title: "已完成",
-                icon: " success",
-                duration: 3000,
-                mask: true
+
+
+              wx.request({
+                url: "https://www.360myhl.com/meixinJF/xcx/ht?attendantsid=" + wx.getStorageSync("Yid"),
+                data: {},
+                header: {
+                  "content-type": "application/json" // 默认值
+                },
+                success: function(res) {
+                  if (res) {
+                    console.log("档期信息：", res.data);
+                    that.tileContent = res.data;
+                    // that.$refs.calendar.renderer(2018, 8);
+
+                    wx.showToast({
+                      title: "已完成",
+                      icon: " success",
+                      duration: 1500,
+                      mask: true
+                    });
+                  }
+                }
               });
+
             }
           }
         });
         // 重新获取数据
-        wx.request({
-          url: "https://www.360myhl.com/meixinJF/xcx/ht?attendantsid=" + wx.getStorageSync("Yid"),
-          data: {},
-          header: {
-            "content-type": "application/json" // 默认值
-          },
-          success: function(res) {
-            if (res) {
-              console.log("档期信息：", res.data);
-              that.tileContent = res.data;
-              // that.$refs.calendar.renderer(2018, 8);
-            }
-          }
-        });
+
       }
     },
     created() {

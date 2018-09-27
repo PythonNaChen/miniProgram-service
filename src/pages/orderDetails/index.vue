@@ -147,7 +147,7 @@
       // 保存数据
       saveData() {
         let that = this;
-        let api = "https://www.360myhl.com/meixinJF/xcx/YAQsave?education=" + this.education + '&marriage=' + this.birth + '&zodiac=' + this.zodiac +'&place=' + this.city; // 对应上传图片
+        let api = "https://www.360myhl.com/meixinJF/xcx/YAQsave?education=" + this.education + '&marriage=' + this.birth + '&zodiac=' + this.zodiac ; // 对应上传图片
         wx.request({
           url: api,
           method:'post',
@@ -157,6 +157,7 @@
             age: this.age,
             high: this.height,
             heavy: this.weight,
+            place: this.city,
           },
           header: {
             "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值

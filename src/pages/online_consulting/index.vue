@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="enterSession" open-type="contact" session-from="weapp">进入客服会话</div>
+        <button class="enterSession" open-type="contact" session-from="weapp">进入客服会话</button>
         <div class="call">拨打客服电话</div>
     </div>
 </template>
