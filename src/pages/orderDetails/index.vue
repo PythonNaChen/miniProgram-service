@@ -42,7 +42,7 @@
                     <div class="left">
                         <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
                         <p>培训学校</p></div>
-                    <div class="right"><p>360母婴</p></div>
+                    <div class="right"><p>咪嘛教育</p></div>
                 </li>
                 <li>
                     <div class="left">
