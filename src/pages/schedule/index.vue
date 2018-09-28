@@ -23,7 +23,7 @@
             <div class="thead_mask"></div>
             <Calendar @next="next" @prev="prev" multi @select="select" ref="calendar" :tileContent="tileContent"
                       :now="now"/>
-            <!--<div class="unclick_mask"></div>-->
+            <div class="unclick_mask"></div>
             <!-- 提示 -->
             <div class="notice">
                 <div class="notice_box">

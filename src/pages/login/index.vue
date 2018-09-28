@@ -105,7 +105,7 @@
                 // 登陆成功
                 console.log("登陆成功");
                 wx.switchTab({
-                  url: "/pages/index/main"
+                  url: "/pages/mine/main"
                 });
               } else if (res.data === 2) {
                 //登录失败
