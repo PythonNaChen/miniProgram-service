@@ -18,7 +18,7 @@
                     已发送...
                 </button>
             </div>
-            <div class="login" @click="loginValidate()">登  录</div>
+            <div class="login" @click="loginValidate()">登 录</div>
         </div>
     </div>
 </template>
@@ -85,7 +85,7 @@
       },
       // 登录验证
       async loginValidate() {
-        let that = this
+        let that = this;
         var api = "https://www.360myhl.com/meixinJF/xcx/start2";
         await wx.request({
           url: api,
@@ -113,8 +113,8 @@
                 wx.navigateTo({
                   url: "/pages/login/main"
                 });
-                that.customermobile = ''
-                that.code = ''
+                that.customermobile = "";
+                that.code = "";
                 // 登录失败提示
                 wx.showModal({
                   content: "登录失败，请检查后重试",
@@ -129,15 +129,21 @@
             }
           }
         });
+
       },
       // 一进来看看用户是否授权过
+      /*
+        调起客户端小程序设置界面，返回用户设置的操作结果。设置界面只会出现小程序已经向用户请求过的权限。
+        注意：2.3.0 版本开始，用户发生点击行为后，才可以跳转打开设置页，管理授权信息。
+      */
       getSetting() {
         wx.getSetting({
-          success: function(res) {
-            if (res.authSetting["scope.userInfo"]) {
-              wx.getUserInfo({
-                success: function(res) {
-                  //用户已经授权过
+          success(res) {
+            if (!res.authSetting["scope.userInfo"]) {
+              wx.authorize({
+                scope: "scope.userInfo",
+                success() {
+                  // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
                   console.log("用户已经授权过");
                 }
               });
@@ -147,6 +153,7 @@
           }
         });
       },
+      // 点击发送验证码时候检查微信版本
       getUserInfo1() {
         console.log("click事件首先触发");
         // 判断小程序的API，回调，参数，组件等是否在当前版本可用。  为false 提醒用户升级微信版本
@@ -218,15 +225,18 @@
         background-size: cover;
         height: 100vh;
     }
+
     .logo {
         width: 70%;
         height: 140px;
         margin: 0 auto 105px;
     }
+
     .logo img {
         width: 100%;
         height: 100%;
     }
+
     .phone, .code {
         display: flex;
         font-size: 16px;
@@ -237,6 +247,7 @@
         border-bottom: 2px solid #ea5944;
         padding: 15px 0;
     }
+
     .phone img, .code img {
         vertical-align: text-top;
         width: 30px;
@@ -244,9 +255,11 @@
         margin-right: 20px;
         margin-top: -2px;
     }
+
     .code input {
         width: 50%;
     }
+
     .code button {
         border: 2px solid #ea5944;
         font-size: 12px;
@@ -255,6 +268,7 @@
         color: #ea5944;
         background-color: #f8f8f8;
     }
+
     .login {
         position: absolute;
         left: 38%;
