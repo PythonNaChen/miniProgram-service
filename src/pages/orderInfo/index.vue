@@ -70,44 +70,16 @@
                         <div class="salary_total" v-if="item.typs === 2">共计金额：￥<span>{{item.class_price_yu}}</span>/26天
                         </div>
                         <div class="bott">
-                            <span v-if="item.status === 0 || item.status === 4" @click="getOrderID(item.oid,item.disID)">到岗确认</span>
+                            <span v-if="item.status === 0 || item.status === 4"
+                                  @click="getOrderID(item.oid,item.disID)">到岗确认</span>
                             <span v-if="item.status === 1" @click="endS(item.oid)">请求提前结束</span>
                             <span v-if="item.status === 11" @click="endE(item.oid)">放弃提前结束</span>
-                            <span v-if="item.li === 1 && item.status === 1" @click="li(item.oid,item.disID,3099)">离岗确认</span>
+                            <span v-if="item.li === 1 && item.status === 1"
+                                  @click="li(item.oid,item.disID,3099)">离岗确认</span>
                             <span v-if="item.li === 1 && item.status === 20" @click="li(item.oid,item.disID,20999)">退单离岗确认</span>
 
                             <span v-if="item.status === 1" @click="rest(item.oid,item.disID,207,'申请休息')">休息申请</span>
                             <span v-if="item.status === 2" @click="rest(item.oid,item.disID,2077,'申请回岗')">申请回岗</span>
-
-                         </div>
-                        <!-- 确认时间 -->
-                        <div class="InputConfirm" v-if="isDialog">
-                            <div>
-                                护理员到岗时间
-                            </div>
-                            <div class="inputBox">
-                                <picker class="weui-btn" mode="date" :value="startDate" start="1999-01-01" end="2099-01-01"
-                                        @change="DateChange">
-                                    <span>{{selectedDate}}</span>
-                                </picker>
-                            </div>
-                            <div class="InputConfirm_btn">
-                                <span class="cancel" @click="closeInputConfirm()">取消</span>
-                                <span class="search" @click="sendDate()">确定</span>
-                            </div>
-                        </div>
-                        <!-- 退单时间 -->
-                        <div class="InputConfirm" v-if="isComeToWork">
-                            <div class="inputBox">
-                                <picker class="weui-btn" mode="date" :value="startDate" start="1999-01-01" end="2099-01-01"
-                                        @change="DateChange">
-                                    <span>{{selectedRefundDate}}</span>
-                                </picker>
-                            </div>
-                            <div class="InputConfirm_btn">
-                                <span class="cancel" @click="closeComeToWork()">取消</span>
-                                <span class="search" @click="sureComeToWork()">确定</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,17 +95,14 @@
       return {
         openid: "",
         allData: null,
-        startDate: "2018-08-09",
-        isDialog: false, //  确认时间弹框
-        selectedDate: "点击选择日期", // 存储用户选择的年月日
-        status: 0, // 默认激活 "全部" 选项
+        status: 0 // 默认激活 "全部" 选项
       };
     },
     methods: {
       // 点击获取各自的列表信息
       getEachList(status) {
-        console.log('status', status);
-        let that = this
+        console.log("status", status);
+        let that = this;
         this.status = status;
         let api = "https://www.360myhl.com/meixinJF/xcx/orderDis";
         wx.request({
@@ -154,44 +123,23 @@
         });
       },
 
-      DateChange(e) {
-        console.log("选中的日期为：" + e.mp.detail.value);
-        this.selectedDate = e.mp.detail.value; // 到岗时间
-        this.selectedRefundDate = e.mp.detail.value; // 退单时间
-      },
-
-      // 关闭弹框
-      closeInputConfirm() {
-        this.isDialog = !this.isDialog; // 关闭确认时间的弹框
-        this.selectedDate = "点击选择日期";
-      },
-      // 关闭到退单弹框
-      closeComeToWork() {
-        this.isComeToWork = !this.isComeToWork; // 关闭确认时间的弹框
-        this.selectedDate = "点击选择日期";
-      },
       // 确认时间
-      getOrderID(item,disID){
-
-        console.log(item);
-        console.log(disID);
+      getOrderID(item, disID) {
         wx.showModal({
           title: "确认到岗",
-          content: "提前点击可能会导致用户意义。",
+          content: "提前点击可能会导致用户异议。",
           confirmText: "确认",
           cancelText: "取消",
           success: function(res) {
             console.log(res);
             if (res.confirm) {
               let api = "https://www.360myhl.com/meixinJF/xcx/goHome";
-              console.log("订单号", item);
-              console.log("yid", wx.getStorageSync("Yid"));
               wx.request({
                 url: api,
                 data: {
                   orderid: item,
                   yid: wx.getStorageSync("Yid"),
-                  disID:disID
+                  disID: disID
                 },
                 header: {
                   "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
@@ -201,65 +149,21 @@
                   wx.switchTab({ url });
                 }
               });
-
             } else {
               console.log("用户点击取消");
             }
           }
         });
-        },
-      li(item,disID,id){
-        wx.showModal({
-          title: "确认离岗",
-          content: "确认当前时间为您的离岗时间.",
-          confirmText: "确认",
-          cancelText: "取消",
-          success: function(res) {
-            console.log(res);
-            if (res.confirm) {
-              console.log("用户点击确认");
-
-                let api = "https://www.360myhl.com/meixinJF/xcx/liOrder";
-                wx.request({
-                  url: api,
-                  data: {
-                    orderid: item,
-                    id: id,
-                    disID: disID
-                  },
-                  header: {
-                    "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
-                  },
-                  success: function(res) {
-                    const url = "/pages/mine/main";
-                    wx.switchTab({ url });
-                  }
-                });
-              } else {
-                console.log("用户点击取消");
-              }
-
-          }
-        })
       },
 
-      // 关闭弹框
-      closeInputConfirm() {
-        this.isDialog = !this.isDialog; // 关闭确认时间的弹框
-        this.selectedDate = "点击选择日期";
-      },
       // 请求提前结束
       endS(orderid) {
-
-        console.log("选中的日期为：" + orderid);
-
         wx.showModal({
           title: "申请离单",
           content: "确认提前离岗？",
           confirmText: "确认",
           cancelText: "取消",
           success: function(res) {
-            console.log(res);
             if (res.confirm) {
               let api = "https://www.360myhl.com/meixinJF/xcx/orderFQ";
               wx.request({
@@ -281,47 +185,7 @@
             }
           }
         });
-
-
       },
-
-      rest(orderid,disID,type,str) {
-
-        console.log("选中的日期为：" + orderid);
-
-        wx.showModal({
-          title: str,
-          content: "请确认？",
-          confirmText: "确认",
-          cancelText: "取消",
-          success: function(res) {
-            console.log(res);
-            if (res.confirm) {
-              let api = "https://www.360myhl.com/meixinJF/xcx/restA";
-              wx.request({
-                url: api,
-                data: {
-                  orderid: orderid,
-                  disID: disID,
-                  type: type
-                },
-                header: {
-                  "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
-                },
-                success: function(res) {
-                  const url = "/pages/mine/main";
-                  wx.switchTab({ url });
-                }
-              });
-            } else {
-              console.log("用户点击取消");
-            }
-          }
-        });
-
-
-      },
-
 
       // 放弃提前结束
       endE(orderid) {
@@ -355,29 +219,73 @@
         });
       },
 
-      // 发送确认时间
-      sendDate(orderid) {
-        let that = this;
-        this.isDialog = !this.isDialog; // 关闭确认时间的弹框
-        let api = "https://www.360myhl.com/meixinJF/xcx/goHome";
-        console.log("订单号", orderid);
-        console.log("yid", wx.getStorageSync("Yid"));
-        wx.request({
-          url: api,
-          data: {
-            orderid: orderid,
-            yid: wx.getStorageSync("Yid"),
-          },
-          header: {
-            "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
-          },
+      // 离岗
+      li(item, disID, id) {
+        wx.showModal({
+          title: "确认离岗",
+          content: "确认当前时间为您的离岗时间.",
+          confirmText: "确认",
+          cancelText: "取消",
           success: function(res) {
-            if (res) {
-              that.selectedDate = "点击选择日期";
+            console.log(res);
+            if (res.confirm) {
+              console.log("用户点击确认");
+              let api = "https://www.360myhl.com/meixinJF/xcx/liOrder";
+              wx.request({
+                url: api,
+                data: {
+                  orderid: item,
+                  id: id,
+                  disID: disID
+                },
+                header: {
+                  "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
+                },
+                success: function(res) {
+                  const url = "/pages/mine/main";
+                  wx.switchTab({ url });
+                }
+              });
+            } else {
+              console.log("用户点击取消");
             }
           }
         });
       },
+
+      // 休息
+      rest(orderid, disID, type, str) {
+        wx.showModal({
+          title: str,
+          content: "请确认？",
+          confirmText: "确认",
+          cancelText: "取消",
+          success: function(res) {
+            console.log(res);
+            if (res.confirm) {
+              let api = "https://www.360myhl.com/meixinJF/xcx/restA";
+              wx.request({
+                url: api,
+                data: {
+                  orderid: orderid,
+                  disID: disID,
+                  type: type
+                },
+                header: {
+                  "content-type": "application/x-www-form-urlencoded;charset=utf-8" // 默认值
+                },
+                success: function(res) {
+                  const url = "/pages/mine/main";
+                  wx.switchTab({ url });
+                }
+              });
+            } else {
+              console.log("用户点击取消");
+            }
+          }
+        });
+      },
+
       // 获取订单列表
       getOrderList(status) {
         let that = this;
@@ -404,6 +312,7 @@
           return "weui-navbar__slider_" + status;
         }
       },
+
       // 点击头像跳转到日志页面 /pages/logs_record/main
       go_logs_record(id) {
         console.log("点击头像跳转到日志页面", id);
@@ -414,13 +323,6 @@
     },
     created() {
       console.log("created", this.openid);
-      const myDate = new Date()
-      let year = myDate.getFullYear(); //获取完整的年份(4位,1970-????)
-      let month = myDate.getMonth()+1; //获取当前月份(0-11,0代表1月)
-      let day = myDate.getDate(); //获取当前日(1-31)
-      console.log(year, month, day);
-
-      console.log(myDate<'2018-05-03');
     },
     onLoad: function(options) {
       this.openid = options.openid;
@@ -455,8 +357,8 @@
         line-height: 25px;
         padding: 0 15px;
         margin: 0 10px;
-        font-weight:normal;
-        font-size:16px;
+        font-weight: normal;
+        font-size: 16px;
     }
 
     .selected {
