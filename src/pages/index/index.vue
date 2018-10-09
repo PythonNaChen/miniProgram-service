@@ -7,7 +7,7 @@
                 <img src="https://www.360myhl.com/meixinJF/static/images/open.png">
             </div>
             <img src="https://www.360myhl.com/meixinJF/static/images/logo.jpg" class="logo">
-            <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu">
+            <img src="https://www.360myhl.com/meixinJF/static/images/phone-icon.png" class="kefu" @click="calling">
         </div>
 
         <!--轮播图-->
@@ -34,6 +34,11 @@
                 <img src="https://www.360myhl.com/meixinJF/static/images/baby-cart.png">
                 <span>育儿嫂</span>
             </div>
+            <a href="https://det.zoosnet.net/lr/chatpre.aspx?id=det55046512&lng=cn">
+                <button class="connect_kefu" open-type="contact" session-from="weapp">
+                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/kefu_icon.png" alt="">
+                </button>
+            </a>
         </div>
 
         <!--推荐订单标题-->
@@ -159,6 +164,18 @@
               }
             });
           });
+      },
+      // 拨打电话
+      calling: function() {
+        wx.makePhoneCall({
+          phoneNumber: "4000360028",
+          success: function() {
+            console.log("拨打电话成功！");
+          },
+          fail: function() {
+            console.log("拨打电话失败！");
+          }
+        });
       },
       getEachInfo(type) {
         let that = this;
@@ -286,6 +303,23 @@
         -ms-flex-align: center;
         align-items: center;
         margin: 32px;
+    }
+
+    .home .classify .connect_kefu {
+        position: fixed;
+        right: 10px;
+        top: 40%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 0 2px 2px #ebc0bc;
+        background-color: #fff;
+    }
+
+    .home .classify .connect_kefu img {
+        width:45px;
+        height:100%;
+        margin-left: -9px;
     }
 
     .home .classify-item img {

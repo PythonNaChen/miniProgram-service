@@ -51,7 +51,7 @@
         startDate: `${thisYear}-${thisMonth}-${thisDay}`, // 开始日期
         s_date: "选择开始日期", // 所选的开始日期
         endDate: `${thisYear}-${thisMonth}-${thisDay}`, // 结束日期
-        e_date: "选择结束日期", // 所选的开始日期
+        e_date: "选择结束日期", // 所选的结束日期
         isActive: true, // 勾选了安排调休为 true ，为 false 时表示选择了 安排工作
         isActiveValue: "0", // 显示 安排调休或者工作
         now: false, // 是否显示今日的图标
@@ -80,7 +80,6 @@
           console.log("状态", this.isActive);
           this.isActiveValue = "0";
           console.log("值", this.isActiveValue);
-          this.$forceUpdate();
         } else if (v === 1) {
           console.log("您选择了可预约");
           this.isActive = false;
@@ -115,8 +114,6 @@
           success: function(res) {
             if (res) {
               // console.log('submitSchedule', res);
-
-
               wx.request({
                 url: "https://www.360myhl.com/meixinJF/xcx/ht?attendantsid=" + wx.getStorageSync("Yid"),
                 data: {},
