@@ -219,6 +219,10 @@
 
     .mother-detail .info-list li .li-right {
         color: #797979;
+        font-size:14px;
+        width:60%;
+        text-align:right;
+        overflow:hidden;
     }
 
     .mother-detail .info-list li:last-child {

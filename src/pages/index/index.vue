@@ -48,9 +48,9 @@
             </div>
             <div class="Right">恭喜张姐抢到<span>¥8000</span>育儿嫂订单</div>
         </div>
+
         <!--推荐订单列表-->
-        <div class="list" v-for="(item, index) in data" :key="index" @click="goOrderDetail(item.oid)"
-             v-if="No_data === false">
+        <div class="list" v-if="data" v-for="(item, index) in data" :key="index" @click="goOrderDetail(item.oid)">
             <h3 v-if="item.typs === 2">{{item.JBID}}月嫂</h3>
             <h3 v-if="item.typs === 1">{{item.JBID}}育儿嫂</h3>
             <div class="time">
@@ -69,7 +69,7 @@
                 <div class="Right1">已有<span>{{item.nums}}</span>位护理员报名</div>
             </div>
         </div>
-        <div class="order_list" v-if="No_data === true" style="display: flex;align-items: center">
+        <div class="order_list" v-if="data && data.length === 0" style="display: flex;align-items: center">
             <span style="color: #ea5a43; width: 100px;margin: 30px auto 0;">暂无数据...</span>
         </div>
     </div>
@@ -92,7 +92,6 @@
         ],
         openid: "",
         data: null,
-        No_data: false
       };
     },
 
@@ -202,11 +201,6 @@
               }
             }
             that.data = res.data;
-            if (that.data.length > 0) {
-              that.No_data = false;
-            } else {
-              that.No_data = true;
-            }
             console.log("月嫂/育儿嫂：", that.data);
           }
         });
@@ -214,7 +208,8 @@
     },
 
     onLoad() {
-      this.getSetting();
+      // this.getSetting();
+      this.getEachInfo(2);
     }
   };
 </script>
