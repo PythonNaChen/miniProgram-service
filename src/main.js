@@ -24,6 +24,7 @@ export default {
       "pages/schedule/main", // 档期详情
       "pages/orderInfo/main", // 订单列表
       "pages/orderDetails/main", // 订单列表详情
+      "pages/signUp/main", // 报名
     ],
     window: {
       backgroundTextStyle: 'light',

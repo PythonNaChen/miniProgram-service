@@ -20,13 +20,13 @@
                         </picker>
                     </div>
                 </li>
-                <li>
-                    <div class="left">
-                        <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
-                        <p>擅长菜系</p></div>
-                    <!--<div class="right"><input type="text" :value=" '川菜' "></div>-->
-                    <div class="right"><p>清淡</p></div>
-                </li>
+                <!--<li>-->
+                    <!--<div class="left">-->
+                        <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">-->
+                        <!--<p>擅长菜系</p></div>-->
+                    <!--&lt;!&ndash;<div class="right"><input type="text" :value=" '川菜' "></div>&ndash;&gt;-->
+                    <!--<div class="right"><p>清淡</p></div>-->
+                <!--</li>-->
                 <li>
                     <div class="left">
                         <img src="http://www.360myhl.com/meixinJF/MM/ximg/user-icon.png" alt="">
@@ -112,9 +112,9 @@
         zodiacPicker: 1,
         zodiacArray: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
         // 生育概况
-        birth: "已婚",
+        birth: "已孕",
         birthPicker: 1,
-        birthArray: ["已婚", "未婚"],
+        birthArray: ["已孕", "未孕"],
         // 默认日期
         date: "2016-09-01",
         age: "28", // 默认年龄
