@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <div class="logo">
-            <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" class="logo">
+            <img src="https://www.360myhl.com/meixinJF/img/companyLogo.png" class="logo" @click="goHome()">
         </div>
         <div class="info" style="position: relative;">
             <div class="phone">
@@ -61,8 +61,9 @@
     },
     methods: {
       // 跳转到首页
-      goHome(url) {
-        wx.navigateTo({ url });
+      goHome() {
+        const url = '/pages/index/main';
+        wx.switchTab({ url });
       },
       // 发送短信验证
       async changeCode(openid) {

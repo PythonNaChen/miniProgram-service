@@ -14,13 +14,13 @@
         <div class="weui-tab__panel">
           <div class="weui-tab__content" :hidden="activeIndex != 0">
             <ul>
-              <li @click="goArticle()" class="show-item">
+              <li @click="goArticle(1)" class="show-item">
                 <div class="show-item-user">
                   <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
+                    <img src="../../../static/images/muyingzhishi.png">
                   </div>
                   <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
+                    <p class="title">成都月嫂推荐：关于母乳喂养的小知识</p>
                     <p class="time">2016年03月24日</p>
                   </div>
                 </div>
@@ -32,16 +32,14 @@
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
+                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
                 <!--</div>-->
                 <!--</div>-->
-                <p class="title">成都月嫂推荐：关于母乳喂养的小知识</p>
                 <div class="talk-area">
-                  <p>母乳对于宝宝，是天然、营养的食物，好处 甚多。</p>
-                  <p>然而许多妈妈却是在分娩后才意识到要恶补...</p>
+                  <p>母乳对于宝宝，是天然、营养的食物，好处 甚多。然而许多妈妈却是在分娩后才意识到要恶补...</p>
                 </div>
                 <!--<div class="view-amount">-->
                 <!--<div class="view-amount-item view-amount-left">-->
@@ -54,14 +52,14 @@
                 <!--</div>-->
                 <!--</div>-->
               </li>
-              <li @click="goArticle()" class="show-item">
+              <li @click="goArticle(2)" class="show-item">
                 <div class="show-item-user">
                   <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
+                    <img src="../../../static/images/yunqifenxiang.png">
                   </div>
                   <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2016年07月07日</p>
+                    <p class="title">盲目补充营养反而导致胎儿发育不良</p>
+                    <p class="time">2016年08月12日</p>
                   </div>
                 </div>
                 <!--<div class="img-group">-->
@@ -72,16 +70,14 @@
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
+                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
                 <!--</div>-->
                 <!--</div>-->
-                <p class="title">孕前优生检查哪些情况要特别注意</p>
                 <div class="talk-area">
-                  <p>想要生出优质的宝宝，就不能忽视孕前检查的重要性，可以避免很多麻烦。</p>
-                  <p>今天360母婴所介绍的内容...</p>
+                  <p>360母婴发现很多准妈妈在知道自己怀孕之后，就走上了一条补充营养的道路上...</p>
                 </div>
                 <!--<div class="view-amount">-->
                 <!--<div class="view-amount-item view-amount-left">-->
@@ -94,14 +90,14 @@
                 <!--</div>-->
                 <!--</div>-->
               </li>
-              <li @click="goArticle()" class="show-item">
+              <li @click="goArticle(3)" class="show-item">
                 <div class="show-item-user">
                   <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
+                    <img src="../../../static/images/mimayuesao.png">
                   </div>
                   <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2018年08月23日</p>
+                    <p class="title">咪嘛月嫂重庆店9月15日盛大开业，礼献全城！</p>
+                    <p class="time">2018年09月12日</p>
                   </div>
                 </div>
                 <!--<div class="img-group">-->
@@ -112,16 +108,14 @@
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
+                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
                 <!--</div>-->
                 <!--</div>-->
-                <p class="title">咪嘛月嫂（360母婴）重庆公司9月即将开业</p>
                 <div class="talk-area">
-                  <p>咪嘛月嫂（360母婴）旗下重庆分公司将于2018年9月10日试营业。</p>
-                  <p>公司位于重庆市江北区红旗河沟龙湖新壹街1号楼1314-1319...</p>
+                  <p>金秋时节，备受期待的咪嘛月嫂重庆店即将盛大开业。咪嘛月嫂用四重惊喜优惠...</p>
                 </div>
                 <!--<div class="view-amount">-->
                 <!--<div class="view-amount-item view-amount-left">-->
@@ -138,13 +132,13 @@
           </div>
           <div class="weui-tab__content" :hidden="activeIndex != 1">
             <ul>
-              <li @click="goArticle()" class="show-item">
+              <li @click="goArticle(1)" class="show-item">
                 <div class="show-item-user">
                   <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
+                    <img src="../../../static/images/muyingzhishi.png">
                   </div>
                   <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
+                    <p class="title">成都月嫂推荐：关于母乳喂养的小知识</p>
                     <p class="time">2016年03月24日</p>
                   </div>
                 </div>
@@ -156,136 +150,14 @@
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
+                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
                 <!--</div>-->
                 <!--</div>-->
-                <p class="title">成都月嫂推荐：关于母乳喂养的小知识</p>
                 <div class="talk-area">
-                  <p>母乳对于宝宝，是天然、营养的食物，好处 甚多。</p>
-                  <p>然而许多妈妈却是在分娩后才意识到要恶补...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司 </p>
-                    <p class="time">2016年05月05日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">成都月嫂分享：奶瓶选择有讲究</p>
-                <div class="talk-area">
-                  <p>一、选择什么购买渠道？</p>
-                  <p>1、正规的商场大超市会有婴儿...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2016年05月15日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">母乳喂养小知识 乳汁是怎样产生</p>
-                <div class="talk-area">
-                  <p>今年的5月20日就是第26个“全国母乳喂养宣传日”了，</p>
-                  <p>在多年的知识普及舆论宣传下，全国母乳喂养比例依然...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2016年05月09日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">妈妈应该从成都特高级月嫂那里学些什么</p>
-                <div class="talk-area">
-                  <p>360母婴发现很多妈妈请了月嫂帮忙，</p>
-                  <p>觉得自己付了钱就什么也不管，其实这种思维是有问题的...</p>
+                  <p>母乳对于宝宝，是天然、营养的食物，好处 甚多。然而许多妈妈却是在分娩后才意识到要恶补...</p>
                 </div>
                 <!--<div class="view-amount">-->
                 <!--<div class="view-amount-item view-amount-left">-->
@@ -302,13 +174,13 @@
           </div>
           <div class="weui-tab__content" :hidden="activeIndex != 2">
             <ul>
-              <li @click="goArticle()" class="show-item">
+              <li @click="goArticle(2)" class="show-item">
                 <div class="show-item-user">
                   <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
+                    <img src="../../../static/images/yunqifenxiang.png">
                   </div>
                   <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
+                    <p class="title">盲目补充营养反而导致胎儿发育不良</p>
                     <p class="time">2016年08月12日</p>
                   </div>
                 </div>
@@ -320,136 +192,14 @@
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
+                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
                 <!--</div>-->
                 <!--</div>-->
-                <p class="title">盲目补充营养反而导致胎儿发育不良</p>
                 <div class="talk-area">
-                  <p>360母婴发现很多准妈妈在知道自己怀孕之后，</p>
-                  <p>就走上了一条补充营养的道路上...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2016年07月07日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">孕前优生检查哪些情况要特别注意</p>
-                <div class="talk-area">
-                  <p>想要生出优质的宝宝，就不能忽视孕前检查的重要性，可以避免很多麻烦。</p>
-                  <p>今天360母婴所介绍的内容...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2016年08月25日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">成都金牌月嫂教你如何防止铅中毒</p>
-                <div class="talk-area">
-                  <p>铅中毒对孕妇有哪些危害？</p>
-                  <p>血铅超标会对人体造成伤害，对孕妇这种危害就更大...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2016年08月22日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">成都月嫂分享：怀孕后妈妈的身体变化和对策</p>
-                <div class="talk-area">
-                  <p>孕育生命是一件很神奇的事情，不仅体内有个小生命在悄悄的长大，</p>
-                  <p>而准妈妈自身也会发生不少的变化...</p>
+                  <p>360母婴发现很多准妈妈在知道自己怀孕之后，就走上了一条补充营养的道路上...</p>
                 </div>
                 <!--<div class="view-amount">-->
                 <!--<div class="view-amount-item view-amount-left">-->
@@ -466,53 +216,13 @@
           </div>
           <div class="weui-tab__content" :hidden="activeIndex != 3">
             <ul>
-              <li @click="goArticle()" class="show-item">
+              <li @click="goArticle(3)" class="show-item">
                 <div class="show-item-user">
                   <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
+                    <img src="../../../static/images/mimayuesao.png">
                   </div>
                   <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2018年09月15日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">育婴师调价通知</p>
-                <div class="talk-area">
-                  <p>非常感谢您在本公司平台选择育儿嫂服务，</p>
-                  <p>近期咪嘛月嫂全面启动平台制转型我们对原有育婴师服务进行了全面的升级...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
+                    <p class="title">咪嘛月嫂重庆店9月15日盛大开业，礼献全城！</p>
                     <p class="time">2018年09月12日</p>
                   </div>
                 </div>
@@ -524,96 +234,14 @@
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
+                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png">-->
                 <!--</div>-->
                 <!--<div class="img-box">-->
                 <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
                 <!--</div>-->
                 <!--</div>-->
-                <p class="title">咪嘛月嫂重庆店9月15日盛大开业，礼献全城！</p>
                 <div class="talk-area">
-                  <p>金秋时节，备受期待的咪嘛月嫂重庆店即将盛大开业。</p>
-                  <p>咪嘛月嫂用四重惊喜优惠，献礼山城，为...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2018年08月23日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">咪嘛月嫂（360母婴）重庆公司9月即将开业</p>
-                <div class="talk-area">
-                  <p>咪嘛月嫂（360母婴）旗下重庆分公司将于2018年9月10日试营业。</p>
-                  <p>公司位于重庆市江北区红旗河沟龙湖新壹街1号楼1314-1319...</p>
-                </div>
-                <!--<div class="view-amount">-->
-                <!--<div class="view-amount-item view-amount-left">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/talk.png">-->
-                <!--<span>点击次数:625</span>-->
-                <!--</div>-->
-                <!--<div class="view-amount-item">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/view.png">-->
-                <!--<span>1256阅读</span>-->
-                <!--</div>-->
-                <!--</div>-->
-              </li>
-              <li @click="goArticle()" class="show-item">
-                <div class="show-item-user">
-                  <div class="awatar-box">
-                    <img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">
-                  </div>
-                  <div class="awatar-right">
-                    <p class="name">成都360母婴护理公司</p>
-                    <p class="time">2018年08月09日</p>
-                  </div>
-                </div>
-                <!--<div class="img-group">-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/baby-awatar.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo4.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/show-item1.jpg">-->
-                <!--</div>-->
-                <!--<div class="img-box">-->
-                <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/work-photo2.jpg">-->
-                <!--</div>-->
-                <!--</div>-->
-                <p class="title">邀友有礼 荐者有份——360母婴（咪嘛月嫂）8月促销活动开启</p>
-                <div class="talk-area">
-                  <p>360母婴（咪嘛月嫂）已深耕西南母婴护理家政市场6年多，用真心服务了众多产后家庭</p>
-                  <p>用真心服务了众多产后家庭...</p>
+                  <p>金秋时节，备受期待的咪嘛月嫂重庆店即将盛大开业。咪嘛月嫂用四重惊喜优惠...</p>
                 </div>
                 <!--<div class="view-amount">-->
                 <!--<div class="view-amount-item view-amount-left">-->
@@ -665,8 +293,8 @@
         console.log(e);
         this.activeIndex = e.currentTarget.id;
       },
-      goArticle(){
-        wx.navigateTo({url: "/pages/article/main"});
+      goArticle(type) {
+        wx.navigateTo({url: "/pages/article/main?type=" + type});
       }
     }
   };
@@ -687,7 +315,7 @@
 
   .weui-navbar {
     background-color: #fff;
-    border-bottom: 5px solid #f6f6f6;
+    border-bottom: 3px solid #f6f6f6;
   }
 
   .weui-tab__content {
@@ -737,7 +365,7 @@
   /* 内容一 */
   .show-item {
     padding: 0 20px 10px;
-    border-bottom: .237037037rem solid #f1f2f6;
+    border-bottom: .04rem solid #f1f2f6;
   }
 
   .show-item-user {
@@ -772,6 +400,7 @@
   .show-item-user .awatar-right .time {
     font-size: 12px;
     color: #a7a7a7;
+    text-align: left;
   }
 
   /*图片区域*/
@@ -806,10 +435,14 @@
 
   /* 文字部分 */
   .show-item .title {
-    font-size: 14px;
+    font-size: 16px;
     color: #353535;
     text-align: left;
-    margin: 10px 0;
+    line-height: 25px;
+    width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .show-item .talk-area {
@@ -817,12 +450,20 @@
     border-left: 5px solid #ea5a43;
     font-size: 12px;
     color: #a7a7a7;
+    margin-top: 10px;
   }
 
   .show-item .talk-area p {
     padding-left: 10px;
     -ms-text-align-last: left;
     text-align-last: left;
+    font-size: 14px;
+    text-indent: unset;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .show-item .view-amount {
