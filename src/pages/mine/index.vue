@@ -6,7 +6,7 @@
           <img v-if="userPhoto[0] !== '' && userPhoto[0] !== undefined && userPhoto[0] !== null "
                :src="userPhoto[0]"
                alt="">
-          <img v-else src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">
+          <img v-else src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadIm.png" alt="">
         </div>
         <div class="userInfo">
           <p class="line_one" v-if="customername === null">未设置<span class="level">专家级</span></p>
@@ -251,7 +251,7 @@
       // 跳转到档期
       goCollection() {
         const url = "../collection/main?id=" + this.id;
-        if (this.levelName == 11) {
+        if (this.levelName === 11 || this.levelName === '11') {
           wx.showModal({
             content: '账号等级不足，请联系您的护理员经理',
             showCancel: false,

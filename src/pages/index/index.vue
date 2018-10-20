@@ -304,17 +304,17 @@
         position: fixed;
         right: 10px;
         top: 40%;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         box-shadow: 0 0 2px 2px #ebc0bc;
         background-color: #fff;
     }
 
     .home .classify .connect_kefu img {
-        width:45px;
+        width:40px;
         height:100%;
-        margin-left: -9px;
+        margin-left: -14px;
     }
 
     .home .classify-item img {

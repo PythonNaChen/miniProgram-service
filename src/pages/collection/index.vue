@@ -1,5 +1,5 @@
 <template>
-  <div class="yuesao-index" style="font-weight: 800;">
+  <div class="yuesao-index" v-if="data" style="font-weight: 800;">
     <!--头部-->
     <div class="header">
       <div class="header_top">
@@ -306,7 +306,7 @@
     <!--<div class="item">-->
     <!--<div class="topBox">-->
     <!--<div class="headImg">-->
-    <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">-->
+    <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadIm.png" alt="">-->
     <!--</div>-->
     <!--<div class="name_and_date">-->
     <!--<p class="line_one">雇主：王先生</p>-->
@@ -320,7 +320,7 @@
     <!--<div class="item">-->
     <!--<div class="topBox">-->
     <!--<div class="headImg">-->
-    <!--<img src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">-->
+    <!--<img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadIm.png" alt="">-->
     <!--</div>-->
     <!--<div class="name_and_date">-->
     <!--<p class="line_one">雇主：王先生</p>-->
@@ -579,9 +579,8 @@
         overflow: hidden;
         margin: 0 auto;
         img {
-          width: 107px;
+          width: 100%;
           height: 100%;
-          margin-left: -10px;
         }
       }
       .header-detail {
@@ -623,7 +622,7 @@
           color: #f57247;
           border: 2px solid #ea5944;
           font-size: 12px;
-          border-radius: 4px;
+          border-radius: 5px;
           width: 50px;
         }
       }

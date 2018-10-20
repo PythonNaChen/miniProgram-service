@@ -49,7 +49,7 @@
                                 <img :src="'' + item.tx" alt="">
                             </div>
                             <div class="img_box" v-else @click="go_logs_record(item.id, item.name)">
-                                <img src="https://www.360myhl.com/meixinJF/MM/ximg/normalHeadImg.png" alt="">
+                                <img src="http://www.360myhl.com/meixinJF/MM/ximg/normalHeadIm.png" alt="">
                             </div>
                             <div class="desc">
                                 <div class="word" style="background-color: #fef0f0;">
