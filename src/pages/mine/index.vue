@@ -121,7 +121,7 @@
       // 拨打电话
       calling: function () {
         wx.makePhoneCall({
-            phoneNumber: "4000360028",
+            phoneNumber: this.YPHONE,
             success: function () {
               console.log("拨打电话成功！");
             },
@@ -149,7 +149,6 @@
             that.userPhoto.push(data.userInfo.avatarUrl);
           }
         });
-        console.log("that.userPhoto", that.userPhoto);
       },
       // 获取用户的授权信息（名称、城市）
       getSetting() {
@@ -158,7 +157,6 @@
           wx.login({
             success: function (res) {
               if (res) {
-                console.log("res.code", res.code);
                 resolve(res.code);
               } else {
                 reject(res);
@@ -278,10 +276,11 @@
       wx.getSetting({
         success(res) {
           if (res.authSetting["scope.userInfo"]) {
-            console.log(111);
-          } else {
+            console.log('已获取当前用户信息');
+          }else{
+            console.log('未用户信息，将跳转到登录页');
             // 没有授权过的用户，跳转到自己写的授权提示页面
-            wx.navigateTo({
+            wx.redirectTo({
               url: "/pages/login/main"
             });
           }

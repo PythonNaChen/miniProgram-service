@@ -23,7 +23,9 @@
         box-sizing: border-box;
         font-weight: 800;
     }
-
+    p, span, a, div{
+      font-weight: normal;
+    }
     /* this rule will be remove */
     * {
         font-weight: 800;

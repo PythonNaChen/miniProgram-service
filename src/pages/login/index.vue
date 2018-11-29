@@ -6,15 +6,15 @@
         <div class="info" style="position: relative;">
             <div class="phone">
                 <img src="https://www.360myhl.com/meixinJF/MM/ximg/phone_03.png" alt="">
-                <input type="text" placeholder="手机号" maxlength="11" v-model="customermobile ">
+                <input type="text" placeholder="请先输入手机号" maxlength="11" v-model="customermobile ">
             </div>
             <div class="code">
                 <img src="https://www.360myhl.com/meixinJF/MM/ximg/code_07.png" alt="">
-                <input type="text" placeholder="验证码" v-model="code" maxlength="6">
-                <button v-if="!bool" open-type="getUserInfo" @getuserinfo="bindGetUserInfo" @click="getUserInfo1">
+                <input type="text" placeholder="短信验证码" v-model="code" maxlength="6">
+                <button v-if="!bool && isShowCodeButton" open-type="getUserInfo" @getuserinfo="bindGetUserInfo" @click="getUserInfo1">
                     发送验证码
                 </button>
-                <button v-if="bool" style="font-size: 12px;">
+                <button v-if="bool && isShowCodeButton" style="font-size: 12px;">
                     已发送...
                 </button>
             </div>
@@ -29,10 +29,11 @@
   export default {
     name: "index",
     watch: {
-      "code": function() {
-        if (this.customermobile) {
-          if (this.code.length === 6) {
-          }
+      "customermobile": function (phone) {
+        if (phone.length === 11){
+          this.isShowCodeButton = true
+        } else {
+          this.isShowCodeButton = false
         }
       },
       "bool": function(v) {
@@ -52,7 +53,8 @@
         userIMGUrl: null, // 登陆者的 头像地址
         openId: null, // 唯一标识符
         bool: false,
-        isLogin: false // 登录按钮
+        isLogin: false, // 登录按钮
+        isShowCodeButton: false // 默认不显示发送短信按钮
       };
     },
     mounted() {
@@ -258,7 +260,7 @@
     }
 
     .code input {
-        width: 50%;
+        width: 52%;
     }
 
     .code button {
